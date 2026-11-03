@@ -1,0 +1,51 @@
+2026-11-02 15:40:32,730 - INFO - Payment processing started
+2026-11-02 15:40:32,730 - INFO - Payment ID: 1001
+2026-11-02 15:40:32,730 - ERROR - Payment processing failed
+2026-11-02 15:50:03,815 - INFO - Payment processing started
+2026-11-02 15:50:03,816 - INFO - Payment ID: 1001
+2026-11-02 15:50:03,816 - ERROR - Payment processing failed
+2026-11-02 15:50:03,816 - ERROR - Payment calculation failed
+Traceback (most recent call last):
+  File "<python-input-1>", line 21, in <module>
+    result = 100 / 0
+             ~~~~^~~
+ZeroDivisionError: division by zero
+2026-11-02 15:50:39,849 - INFO - Payment processing started
+2026-11-02 15:50:39,850 - INFO - Payment ID: 1001
+2026-11-02 15:50:39,850 - ERROR - Payment processing failed
+2026-11-02 15:50:39,851 - ERROR - Payment calculation failed
+Traceback (most recent call last):
+  File "<python-input-3>", line 21, in <module>
+    result = 100 / 0
+             ~~~~^~~
+ZeroDivisionError: division by zero
+2026-11-02 15:54:32,964 - INFO - Reconciliation batch started
+2026-11-02 15:54:32,964 - INFO - Starting payment: 1001
+2026-11-02 15:54:32,965 - INFO - Payment 1001 reconciled successfully
+2026-11-02 15:54:32,965 - INFO - Starting payment: 1002
+2026-11-02 15:54:32,965 - ERROR - Payment 1002 reconciliation failed
+Traceback (most recent call last):
+  File "<python-input-4>", line 15, in reconcile_payment
+    raise ValueError("Negative payment amount")
+ValueError: Negative payment amount
+2026-11-02 15:54:32,965 - INFO - Reconciliation batch completed
+2026-11-02 16:01:40,221 - INFO - Reconciliation batch started
+2026-11-02 16:01:40,221 - INFO - Starting payment: 1001
+2026-11-02 16:01:40,221 - INFO - Payment 1001 reconciled successfully for $250.00
+2026-11-02 16:01:40,221 - INFO - Starting payment: 1002
+2026-11-02 16:01:40,221 - ERROR - Payment 1002 reconciliation failed
+Traceback (most recent call last):
+  File "<python-input-5>", line 15, in reconcile_payment
+    raise ValueError("Negative payment amount")
+ValueError: Negative payment amount
+2026-11-02 16:01:40,222 - INFO - Reconciliation batch completed
+2026-11-02 16:02:29,081 - INFO - Reconciliation batch started
+2026-11-02 16:02:29,081 - INFO - Starting payment: 1001
+2026-11-02 16:02:29,081 - INFO - Payment 1001 reconciled successfully for $250.00
+2026-11-02 16:02:29,082 - INFO - Starting payment: 1002
+2026-11-02 16:02:29,082 - ERROR - Payment 1002 reconciliation failed for $-50.00
+Traceback (most recent call last):
+  File "<python-input-6>", line 15, in reconcile_payment
+    raise ValueError("Negative payment amount")
+ValueError: Negative payment amount
+2026-11-02 16:02:29,082 - INFO - Reconciliation batch completed
