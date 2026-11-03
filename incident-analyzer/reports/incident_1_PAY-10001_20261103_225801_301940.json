@@ -1,0 +1,32 @@
+{
+    "report_metadata": {
+        "generated_at": "2026-11-03T22:58:01.301940+00:00",
+        "report_type": "PAYMENT_INCIDENT_ANALYSIS"
+    },
+    "incident": {
+        "incident_id": 1,
+        "payment_id": "PAY-10001",
+        "amount": "250.00",
+        "currency": "USD",
+        "status": "FAILED",
+        "error_code": "INSUFFICIENT_FUNDS",
+        "error_description": "Insufficient customer balance",
+        "created_at": "2026-11-03T17:04:43.137875+00:00"
+    },
+    "analysis": {
+        "payment_id": "PAY-10001",
+        "incident_category": "ISSUER_DECLINE",
+        "root_cause": "The supplied records indicate a decline due to insufficient customer funds.",
+        "confidence": "HIGH",
+        "evidence": [
+            "Internal status is FAILED with error code INSUFFICIENT_FUNDS and description 'Insufficient customer balance'.",
+            "MockGateway returned status DECLINED, response code 51, and message 'Insufficient funds'.",
+            "Internal and gateway records agree on the reason for failure."
+        ],
+        "recommended_actions": [
+            "Inform the customer that the payment was declined due to insufficient funds.",
+            "Ask the customer to ensure sufficient funds are available or use an alternative payment method."
+        ],
+        "retry_recommendation": "Do not retry automatically without an approved business rule. A customer-initiated retry may be appropriate after sufficient funds are available."
+    }
+}

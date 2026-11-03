@@ -1,0 +1,8 @@
+2026-11-03 18:01:43,754 | INFO | __main__ | Payment Incident Analyzer started
+2026-11-03 18:01:53,163 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-11-03 18:01:53,329 | INFO | __main__ | Generating report for payment_id=PAY-10001
+2026-11-03 18:01:53,343 | INFO | __main__ | Report generated for payment_id=PAY-10001
+2026-11-03 18:09:49,635 | INFO | __main__ | Payment Incident Analyzer started
+2026-11-03 18:09:58,104 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-11-03 18:09:58,281 | INFO | __main__ | Generating report for payment_id=PAY-10001
+2026-11-03 18:09:58,292 | INFO | __main__ | Report generated for payment_id=PAY-10001
