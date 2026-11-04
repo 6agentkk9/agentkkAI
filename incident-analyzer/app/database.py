@@ -1,23 +1,30 @@
 import sqlite3
+from contextlib import contextmanager
 from pathlib import Path
 
 
 DATABASE_PATH = Path(__file__).resolve().parent.parent / "data" / "payment_incidents.db"
 
+@contextmanager
+def get_connection(db_path=None):
+    path = Path(db_path) if db_path else DATABASE_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
 
-def get_connection():
-    DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    connection = sqlite3.connect(DATABASE_PATH)
-
-    # Return query results as dictionary-like rows
+    connection = sqlite3.connect(path)
     connection.row_factory = sqlite3.Row
 
-    return connection
+    try:
+        yield connection
+        connection.commit()
+    except Exception:
+        connection.rollback()
+        raise
+    finally:
+        connection.close()
 
 
-def create_tables():
-    with get_connection() as connection:
+def create_tables(db_path=None):
+    with get_connection(db_path) as connection:
         connection.execute("""
             CREATE TABLE IF NOT EXISTS payment_incidents (
                 incident_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +38,7 @@ def create_tables():
             )
         """)
 
-    print("Database tables created successfully")
+    print("Database tables created successfully.")
 
 
 if __name__ == "__main__":

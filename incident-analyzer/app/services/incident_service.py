@@ -12,8 +12,11 @@ class IncidentService:
 
     VALID_STATUSES = {"NEW", "FAILED", "SUCCESS", "RESOLVED"}
 
-    def __init__(self):
-        self.repository = IncidentRepository()
+    # def __init__(self):
+    #     self.repository = IncidentRepository()
+
+    def __init__(self, repository=None):
+        self.repository = repository or IncidentRepository()
 
     def create_incident(self, incident: PaymentIncident):
 

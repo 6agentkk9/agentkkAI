@@ -1,5 +1,6 @@
 from decimal import Decimal
 from datetime import datetime
+from webbrowser import get
 
 if __package__ and __package__.startswith("app."):
     from ..database import get_connection
@@ -11,9 +12,12 @@ else:
 
 class IncidentRepository:
 
+    def __init__(self, db_path=None):
+        self.db_path = db_path
+
     def save(self, incident: PaymentIncident):
 
-        with get_connection() as connection:
+        with get_connection(self.db_path) as connection:
             cursor = connection.execute("""
                 INSERT INTO payment_incidents (
                     payment_id,
@@ -41,7 +45,7 @@ class IncidentRepository:
 
     def find_by_id(self, incident_id: int):
 
-        with get_connection() as connection:
+        with get_connection(self.db_path) as connection:
             row = connection.execute("""
                 SELECT *
                 FROM payment_incidents
@@ -55,7 +59,7 @@ class IncidentRepository:
 
     def find_all(self):
 
-        with get_connection() as connection:
+        with get_connection(self.db_path) as connection:
             rows = connection.execute("""
                 SELECT *
                 FROM payment_incidents
@@ -66,7 +70,7 @@ class IncidentRepository:
 
     def find_by_status(self, status: str):
 
-        with get_connection() as connection:
+        with get_connection(self.db_path) as connection:
             rows = connection.execute("""
                 SELECT *
                 FROM payment_incidents

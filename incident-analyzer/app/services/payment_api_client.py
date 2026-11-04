@@ -1,9 +1,16 @@
 import requests
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class PaymentApiClient:
 
-    BASE_URL = "http://localhost:8000"
+    # BASE_URL = "http://localhost:8000"
+    BASE_URL = os.getenv(
+        "PAYMENT_API_BASE_URL",
+        "http://localhost:8000"
+    )
 
     def get_payment(self, payment_id: str):
 
