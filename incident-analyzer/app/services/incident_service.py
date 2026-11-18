@@ -3,9 +3,12 @@ from decimal import Decimal
 if __package__ and __package__.startswith("app."):
     from ..models.incident import PaymentIncident
     from ..repositories.incident_repository import IncidentRepository
+    from ..models.api_response import ApiResponse
+
 else:
     from models.incident import PaymentIncident
     from repositories.incident_repository import IncidentRepository
+    from models.api_response import ApiResponse
 
 
 class IncidentService:
@@ -69,3 +72,11 @@ class IncidentService:
             "failed_incidents": failed,
             "successful_incidents": successful
         }
+
+    def get_incident_response(self) -> ApiResponse[PaymentIncident]:
+
+        return ApiResponse(
+            success=True,
+            message="Incident retrieved successfully",
+            data=None
+        )

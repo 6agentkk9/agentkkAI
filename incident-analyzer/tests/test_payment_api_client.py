@@ -1,3 +1,4 @@
+from decimal import Decimal
 from unittest.mock import Mock, patch
 
 import requests
@@ -42,3 +43,9 @@ def test_get_payment_timeout(mock_get):
 
     with pytest.raises(RuntimeError, match="timed out"):
         client.get_payment("PAY-10001")
+
+
+def test_calculate_refund_amount():
+    client = PaymentApiClient()
+
+    assert client.calculate_refund_amount(Decimal("125.50"), 50) == Decimal("62.75")

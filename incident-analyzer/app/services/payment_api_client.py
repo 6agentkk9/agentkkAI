@@ -1,7 +1,7 @@
 import requests
 import os
 from dotenv import load_dotenv
-
+from decimal import Decimal
 load_dotenv()
 
 class PaymentApiClient:
@@ -36,3 +36,19 @@ class PaymentApiClient:
 
         except requests.exceptions.ConnectionError:
             raise RuntimeError("Unable to connect to Payment API")
+
+    @staticmethod
+    def calculate_refund_amount(
+        amount: Decimal,
+        refund_percentage: int | float
+    ) -> Decimal:
+
+        if amount <= 0:
+            raise ValueError("Amount must be positive")
+
+        if not 1 <= refund_percentage <= 100:
+            raise ValueError("Invalid refund percentage")
+
+        percentage = Decimal(str(refund_percentage))
+
+        return amount * percentage / Decimal("100")

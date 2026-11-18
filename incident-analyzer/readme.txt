@@ -113,3 +113,47 @@ AI agents: Build a payment support agent that investigates incidents, retrieves 
 
 Deployment: Docker, CI/CD, and cloud deployment.
 FastAPI: Expose incident analysis through REST endpoints instead of only a CLI.
+
+For a more professional application, we'll separate application code, configuration, tests, and runtime data more clearly.
+Recommended structure
+
+payment-incident-analyzer/
+│
+├── src/
+│   └── payment_analyzer/
+│       ├── __init__.py
+│       ├── main.py
+│       │
+│       ├── config/
+│       │   ├── __init__.py
+│       │   └── settings.py
+│       │
+│       ├── models/
+│       │   ├── __init__.py
+│       │   └── incident.py
+│       │
+│       ├── repositories/
+│       │   ├── __init__.py
+│       │   └── incident_repository.py
+│       │
+│       ├── services/
+│       │   ├── __init__.py
+│       │   ├── incident_service.py
+│       │   └── payment_api_client.py
+│       │
+│       └── utils/
+│           ├── __init__.py
+│           └── logging_config.py
+│
+├── tests/
+│   ├── test_incident_service.py
+│   └── test_incident_repository.py
+│
+├── data/
+├── reports/
+├── logs/
+│
+├── .env
+├── .gitignore
+├── pyproject.toml
+└── README.md
