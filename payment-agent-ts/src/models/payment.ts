@@ -5,7 +5,7 @@ export interface Payment {
     currency: string;
 }
 
-export interface ApiResponse<T> {
-    data: T;
-    message: string;
-}
+// export interface ApiResponse<T> {
+//     data: T;
+//     message: string;
+// }

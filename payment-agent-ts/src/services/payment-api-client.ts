@@ -1,4 +1,4 @@
-import type { Payment } from "../models/payment";
+import type { Payment } from "../models/payment.js";
 
 class PaymentApiClient {
 
@@ -32,4 +32,4 @@ class PaymentApiClient {
     }
 }
 
-export = PaymentApiClient;
+export default PaymentApiClient;
