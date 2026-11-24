@@ -6,5 +6,5 @@
 **/dist/
 **/coverage/
 python-learn/.git/
-**/.env/
+**/.env
 *.log
