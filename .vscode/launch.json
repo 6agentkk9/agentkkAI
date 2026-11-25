@@ -2,13 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug payment-agent-ts",
       "type": "node",
       "request": "launch",
-      "runtimeArgs": ["--import", "tsx"],
-      "program": "${workspaceFolder}/payment-agent-ts/src/index.ts",
+      "name": "Debug payment-agent-ts",
       "cwd": "${workspaceFolder}/payment-agent-ts",
-      "console": "integratedTerminal",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--import", "tsx", "src/index.ts"],
       "skipFiles": ["<node_internals>/**"]
     }
   ]
